@@ -5,7 +5,20 @@ class Wordfreq
 
   def initialize(filename)
     @text = File.read(filename)
-    print @text.gsub(/\W/, ' ')
+      .gsub(/\W/, ' ')
+      .downcase
+      .split(" ")
+      .reject{|e| STOP_WORDS.include? e}
+    # @text.each_line do |line|
+    #   words = line.split
+    #   words.each do |word|
+    #     if words_hash.has_key?(word)
+    #       words_hash[word] = words_hash[word] + 1
+    #     else
+    #       words_hash[word] = 1
+    #     end
+    #   end
+    # end
   end
 
   def frequency(word)
