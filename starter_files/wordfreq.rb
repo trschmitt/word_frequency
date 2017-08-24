@@ -20,11 +20,11 @@ class Wordfreq
   end
 
   def frequency(word)
-
+    frequencies[word]
   end
 
   def top_words(number)
-    # .sort { |a, b| [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
+   frequencies.sort { |a, b| [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
   end
 
   def print_report
