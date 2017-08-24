@@ -11,15 +11,16 @@ class Wordfreq
       .reject{|e| STOP_WORDS.include? e}
   end
 
-  def frequency(word)
-    frequencies
-  end
-
   def frequencies
     text_hash = Hash.new
     @text.each do |word|
       text_hash["#{word}"] = @text.count(word)
     end
+    text_hash
+  end
+
+  def frequency(word)
+
   end
 
   def top_words(number)
