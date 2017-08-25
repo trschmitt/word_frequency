@@ -9,18 +9,22 @@ class Wordfreq
       .downcase
       .split(" ")
       .reject{|e| STOP_WORDS.include? e}
-  end
-
-  def frequencies
-    text_hash = Hash.new
+    @hash = text_hash = Hash.new
     @text.each do |word|
       text_hash["#{word}"] = @text.count(word)
     end
-    text_hash
+  end
+
+  def frequencies
+    @hash
   end
 
   def frequency(word)
-    frequencies[word]
+    if @hash[word] == nil
+      0
+    else
+      @hash[word]
+    end
   end
 
   def top_words(number)
@@ -28,7 +32,7 @@ class Wordfreq
   end
 
   def print_report
-
+    
   end
 end
 
