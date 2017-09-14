@@ -9,9 +9,9 @@ class Wordfreq
       .downcase
       .split(" ")
       .reject{|e| STOP_WORDS.include? e}
-    @hash = text_hash = Hash.new
+    @hash = Hash.new
     @text.each do |word|
-      text_hash["#{word}"] = @text.count(word)
+      @hash["#{word}"] = @text.count(word)
     end
   end
 
@@ -32,7 +32,9 @@ class Wordfreq
   end
 
   def print_report
-    
+    top_words(10).each do |w, n|
+      puts "#{w} |".rjust(9) + " #{n} ".ljust(4) + "*" * @text.count(w)
+    end
   end
 end
 
